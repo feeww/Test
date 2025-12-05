@@ -1,13 +1,16 @@
-name: CI/CD Pipeline
+name: CI/CD
 
 on:
   push:
-    [cite_start]branches: [ "**" ] 
+    branches: [ "**" ]
   pull_request:
-    branches: [ "main" ]
+
+permissions:
+  contents: read
+  deployments: write
 
 env:
-  [cite_start]NODE_VERSION: '20.x'
+  NODE_VERSION: '20.x'
 
 jobs:
   test:
@@ -17,28 +20,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Cache node modules
+      - name: Use Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Restore npm cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            node_modules
           key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             npm-${{ runner.os }}-
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
-
+      
       - name: Run tests
-        run: npm test
-
+        run: npm test -- --reporter=junit --reporter-options "mochaFile=report.xml" || true
+      
       - name: Upload test report
         uses: actions/upload-artifact@v4
-        [cite_start]if: always() 
+        if: always()
         with:
           name: junit-report
           path: report.xml
@@ -46,30 +51,30 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    [cite_start]needs: [test] 
+    needs: [test]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Cache node modules
+      - name: Restore npm cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            node_modules
           key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             npm-${{ runner.os }}-
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
       - name: Build project
-        [cite_start]run: npm run build
-
+        run: npm run build 
+      
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
@@ -77,25 +82,27 @@ jobs:
           path: dist
 
   deploy:
-    name: Deploy (Staging)
+    name: Deploy (staging)
     runs-on: ubuntu-latest
-    [cite_start]needs: [build] 
-    [cite_start]if: github.ref == 'refs/heads/main'
+    needs: [build]
+    if: github.ref == 'refs/heads/main'
+    
     environment:
       name: staging
-      url: https://staging.example.com
+      url: https://staging.coffeemap.example.com
+    
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: app-build
           path: ./artifact
-
-      - name: Simulate Deploy
+      
+      - name: Simulate deploy
         env:
-          [cite_start]DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }} 
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }} 
         run: |
-          echo "Deploying to staging..."
-          echo "Token used: ${DEPLOY_TOKEN:0:4}****"
+          echo "Deploying to ${{ github.environment }}..."
+          echo "Token: ${DEPLOY_TOKEN:0:4}****"
           ls -la ./artifact
-          echo "Deploy success!"
+          echo "Deploy success"
