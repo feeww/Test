@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+    </marker>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+    CoffeeMap Architecture v2
+  </text>
+  <text x="450" y="50" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#7f8c8d">
+    with Database Integration (MVP)
+  </text>
+
+  <circle cx="150" cy="150" r="40" fill="#3498db" filter="url(#shadow)"/>
+  <text x="150" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+    User
+  </text>
+
+  <rect x="300" y="100" width="180" height="100" rx="10" fill="#e74c3c" stroke="#c0392b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="390" y="130" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    Frontend
+  </text>
+  <text x="390" y="150" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="white">
+    Web Interface
+  </text>
+  <text x="390" y="165" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Interactive Map
+  </text>
+  <text x="390" y="180" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Address Search
+  </text>
+  <text x="390" y="195" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Details Display
+  </text>
+
+  <rect x="300" y="250" width="180" height="120" rx="10" fill="#27ae60" stroke="#229954" stroke-width="2" filter="url(#shadow)"/>
+  <text x="390" y="280" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    Backend
+  </text>
+  <text x="390" y="300" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="white">
+    API Wrapper
+  </text>
+  <text x="390" y="320" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Places API Integration
+  </text>
+  <text x="390" y="335" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Data Caching
+  </text>
+  <text x="390" y="350" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Geocoding
+  </text>
+  <text x="390" y="365" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Search Logging
+  </text>
+
+  <g transform="translate(300, 420)">
+    <ellipse cx="90" cy="10" rx="90" ry="15" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="10" width="180" height="60" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+    <ellipse cx="90" cy="70" rx="90" ry="15" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+    <ellipse cx="90" cy="10" rx="90" ry="15" fill="#a569bd"/>
+    
+    <text x="90" y="32" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+      Database
+    </text>
+    <text x="90" y="48" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+      CoffeeShop cache
+    </text>
+    <text x="90" y="62" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+      SearchHistory logs
+    </text>
+  </g>
+
+  <rect x="580" y="250" width="180" height="100" rx="10" fill="#f39c12" stroke="#e67e22" stroke-width="2" filter="url(#shadow)"/>
+  <text x="670" y="280" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+    External Service
+  </text>
+  <text x="670" y="300" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="white">
+    Google Maps API
+  </text>
+  <text x="670" y="320" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Places API
+  </text>
+  <text x="670" y="335" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">
+    Geocoding API
+  </text>
+
+  <line x1="190" y1="150" x2="295" y2="150" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="242" y="145" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">HTTPS</text>
+  
+  <line x1="390" y1="200" x2="390" y2="245" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="410" y="225" font-family="Arial, sans-serif" font-size="9" fill="#2c3e50">REST API</text>
+  <text x="410" y="237" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Address search</text>
+  
+  <line x1="370" y1="245" x2="370" y2="200" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="315" y="225" font-family="Arial, sans-serif" font-size="9" fill="#2c3e50">JSON</text>
+  <text x="315" y="237" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Coffee shops</text>
+
+  <line x1="390" y1="370" x2="390" y2="415" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="410" y="395" font-family="Arial, sans-serif" font-size="9" fill="#2c3e50">SQL</text>
+  <text x="410" y="407" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Cache and Log</text>
+  
+  <line x1="370" y1="415" x2="370" y2="370" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="315" y="395" font-family="Arial, sans-serif" font-size="9" fill="#2c3e50">Records</text>
+  <text x="315" y="407" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Cached data</text>
+
+  <line x1="480" y1="310" x2="575" y2="310" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="527" y="305" font-family="Arial, sans-serif" font-size="9" fill="#2c3e50">HTTPS</text>
+  <text x="527" y="325" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">API Key Location</text>
+  
+  <line x1="575" y1="290" x2="480" y2="290" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+  <text x="527" y="285" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Places JSON</text>
+
+  <line x1="480" y1="150" x2="575" y2="260" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="3,3"/>
+  <text x="515" y="195" font-family="Arial, sans-serif" font-size="8" fill="#7f8c8d">Map SDK</text>
+
+  <g transform="translate(20, 450)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">Legend:</text>
+    <line x1="0" y1="15" x2="30" y2="15" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="35" y="19" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Main data flow</text>
+    
+    <line x1="0" y1="35" x2="30" y2="35" stroke="#34495e" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5"/>
+    <text x="35" y="39" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Response flow</text>
+    
+    <line x1="0" y1="55" x2="30" y2="55" stroke="#95a5a6" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="3,3"/>
+    <text x="35" y="59" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d">Direct integration</text>
+  </g>
+
+  <rect x="580" y="380" width="280" height="190" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="720" y="405" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+    Data Flow Scenario
+  </text>
+  
+  <text x="590" y="430" font-family="Arial, sans-serif" font-size="10" fill="#34495e" font-weight="bold">
+    1. User enters address
+  </text>
+  <text x="595" y="445" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d">
+    Frontend to Backend search request
+  </text>
+  
+  <text x="590" y="467" font-family="Arial, sans-serif" font-size="10" fill="#34495e" font-weight="bold">
+    2. Backend geocodes address
+  </text>
+  <text x="595" y="482" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d">
+    Backend to Google Maps get coordinates
+  </text>
+  
+  <text x="590" y="504" font-family="Arial, sans-serif" font-size="10" fill="#34495e" font-weight="bold">
+    3. Backend searches coffee shops
+  </text>
+  <text x="595" y="519" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d">
+    Backend to Google Places API
+  </text>
+  
+  <text x="590" y="541" font-family="Arial, sans-serif" font-size="10" fill="#34495e" font-weight="bold">
+    4. Backend caches and logs
+  </text>
+  <text x="595" y="556" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d">
+    Backend to Database save results
+  </text>
+</svg>
